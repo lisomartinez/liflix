@@ -6,7 +6,7 @@ import cloud.liso.liflix.model.torrent.Torrent;
 import java.util.List;
 
 public interface TorrentService {
-    List<Torrent> getTorrents(Request request, TorrentSortCriteria searchCriteria);
+    List<Torrent> getTorrents(Request request, SortPolicy searchCriteria);
 
-    Torrent getTorrent(Request request, TorrentSortCriteria searchCriteria);
+    Torrent getTorrent(Request request, SortPolicy searchCriteria);
 }

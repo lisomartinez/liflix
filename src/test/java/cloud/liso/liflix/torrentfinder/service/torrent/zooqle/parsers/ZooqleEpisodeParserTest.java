@@ -6,9 +6,10 @@ import cloud.liso.liflix.repositories.torrent.ReleaseTypeRepository;
 import cloud.liso.liflix.repositories.torrent.ResolutionRepository;
 import cloud.liso.liflix.services.api.httpClient.DOMDocument;
 import cloud.liso.liflix.services.api.httpClient.WebPage;
-import cloud.liso.liflix.services.impl.torrent.zooqle.ZooqleDOMDocument;
-import cloud.liso.liflix.services.impl.torrent.zooqle.parsers.ZooqleEpisodeParser;
-import cloud.liso.liflix.services.impl.torrent.zooqle.selectors.element.*;
+import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleDOMDocument;
+import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleEpisodeParser;
+import cloud.liso.liflix.services.impl.torrent.zooqle.selectors.ZooqleSelectors;
+import cloud.liso.liflix.services.impl.torrent.zooqle.selectors.element.ZooqleDocumentSelector;
 import cloud.liso.liflix.torrentfinder.utils.ZoogleUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,12 +39,7 @@ class ZooqleEpisodeParserTest {
 
     @BeforeEach
     void setUp() {
-        episodeParser = new ZooqleEpisodeParser(new ZoogleDocumentSelector(),
-                new ZoogleTitleElementSelector(),
-                new ZoogleSizeElementSelector(),
-                new ZoogleMagnetLinkElementSelector(),
-                new ZoogleLeechersElementSelector(),
-                new ZoogleSeederElementSelector());
+        episodeParser = new ZooqleEpisodeParser(new ZooqleDocumentSelector(), new ZooqleSelectors());
     }
 
     @Test

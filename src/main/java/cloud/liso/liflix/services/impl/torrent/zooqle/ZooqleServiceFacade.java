@@ -6,6 +6,7 @@ import cloud.liso.liflix.services.api.httpClient.URLConstructor;
 import cloud.liso.liflix.services.api.httpClient.WebClient;
 import cloud.liso.liflix.services.api.httpClient.WebPage;
 import cloud.liso.liflix.services.api.torrent.EpisodeParser;
+import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleDOMDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

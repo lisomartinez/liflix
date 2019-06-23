@@ -2,6 +2,7 @@ package cloud.liso.liflix.showservice.utils;
 
 import cloud.liso.liflix.model.show.*;
 import cloud.liso.liflix.services.impl.imdb.HttpImdbService;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -66,17 +67,17 @@ public class ShowFactory {
         return new Schedule(1, new ArrayList<>(Arrays.asList(DayOfWeek.of(DayOfWeek.THURSDAY))), LocalTime.of(22, 0));
     }
 
-    public static Show getShowComplete(LocalDateTime lastUpdate, String status) throws IOException {
+    public static Show getShowComplete(LocalDateTime lastUpdate) throws IOException {
         Show show = getShowBase();
         show.setSchedule(getSchedule());
         show.setGenres(getGenres());
         show.setLastUpdate(lastUpdate);
-        show.setStatus(status);
+        show.setStatus("airing");
 
-//        List<Season> seasons = getSeasons();
-        //set seasons episodes
+        List<Season> seasons = getSeasons(show);
+//        set seasons episodes
 //        seasons.get(2).setEpisodes(getEpisodesFromSeason(3));
-//        show.setSeasons(seasons);
+        show.setSeasons(seasons);
 
         return show;
     }
@@ -93,50 +94,6 @@ public class ShowFactory {
         return show;
     }
 
-    public static Show getShowUptodateAiring() throws IOException {
-        return getShowComplete(LocalDateTime.now().withSecond(0).withNano(0), "Airing");
-    }
-
-    public static Show getShowUptodateAiringWithoutSeasons() throws IOException {
-        return getShowWithOutSeasons(LocalDateTime.now().withSecond(0).withNano(0), "Airing");
-    }
-
-    public static Show getShowUptodateEnded() throws IOException {
-        return getShowComplete(LocalDateTime.now().withSecond(0).withNano(0), "Ended");
-    }
-
-    public static Show getShowUptodateEndedWithOutSeasons() throws IOException {
-        return getShowWithOutSeasons(LocalDateTime.now().withSecond(0).withNano(0), "Ended");
-    }
-
-    public static Show getShowOutdatedEndedWithOutSeasonsAsSavedInDB() throws IOException {
-        Show show = getShowWithOutSeasons(LocalDateTime.now().withSecond(0).withNano(0), "Ended");
-//        show.getGenres().get(0).setId(1);
-//        show.getGenres().get(1).setId(2);
-//        show.getGenres().get(2).setId(3);
-//        show.getSchedule().setId(1);
-        show.getSchedule().setDays(new ArrayList<>(Arrays.asList(DayOfWeek.of(DayOfWeek.THURSDAY))));
-        return show;
-
-    }
-
-
-    public static Show getShowOutdatedAiring() throws IOException {
-        return getShowComplete(LocalDateTime.now().minusHours(2).minusNanos(0), "Airing");
-    }
-
-    public static Show getShowOutdatedAiringWithoutSeasons() throws IOException {
-        return getShowWithOutSeasons(LocalDateTime.now().minusHours(2).withNano(0), "Airing");
-    }
-
-    public static Show getShowOutdatedEnded() throws IOException {
-        return getShowComplete(LocalDateTime.now().minusHours(2).withNano(0), "Ended");
-    }
-
-    public static Show getShowOutdatedEndedWithoutSeasons() throws IOException {
-        return getShowWithOutSeasons(LocalDateTime.now().minusHours(2).withNano(0), "Ended");
-    }
-
     public static Schedule getSchedule() {
         return new Schedule(1, new ArrayList<>(Arrays.asList(DayOfWeek.of(DayOfWeek.THURSDAY))), LocalTime.of(22, 0));
     }
@@ -151,6 +108,7 @@ public class ShowFactory {
     public static List<Season> getSeasons(Show show) {
         Season seasonOne = Season.builder()
                 .id(1)
+                .tvmazeId(1)
                 .show(show)
                 .number(1)
                 .episodeOrder(13)
@@ -163,6 +121,7 @@ public class ShowFactory {
 
         Season seasonTwo = Season.builder()
                 .id(2)
+                .tvmazeId(2)
                 .show(show)
                 .number(2)
                 .episodeOrder(13)
@@ -174,7 +133,8 @@ public class ShowFactory {
                 .build();
 
         Season seasonThree = Season.builder()
-                .id(6233)
+                .id(3)
+                .tvmazeId(6233)
                 .show(show)
                 .number(3)
                 .episodeOrder(13)
@@ -244,7 +204,22 @@ public class ShowFactory {
 //                .map(ep -> modelMapper.map(ep, Episode.class))
 //                .collect(Collectors.toList());
 //    }
+public static Show saveShow(TestEntityManager em) throws IOException {
+    Show showComplete = ShowFactory.getShowComplete(LocalDateTime.now().withSecond(0).withNano(0));
 
+    DayOfWeek dayOfWeek = em.find(DayOfWeek.class, 4);
+
+    showComplete.getSchedule().setId(0);
+    showComplete.getSchedule().setDays(new ArrayList<>(Arrays.asList(dayOfWeek)));
+    Schedule persist = em.persist(showComplete.getSchedule());
+    showComplete.setSchedule(persist);
+
+    List<Genre> genres = showComplete.getGenres();
+    List<Genre> saved = genres.stream().peek(g -> g.setId(0)).map(em::persist).collect(Collectors.toList());
+    showComplete.setGenres(saved);
+
+    return em.persist(showComplete);
+}
     public static String getImdb() {
         return HttpImdbService.IMDB_BASE_URL;
     }

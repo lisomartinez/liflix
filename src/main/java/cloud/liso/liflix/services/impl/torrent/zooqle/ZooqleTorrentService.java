@@ -4,8 +4,8 @@ import cloud.liso.liflix.model.torrent.Request;
 import cloud.liso.liflix.model.torrent.Torrent;
 import cloud.liso.liflix.model.torrent.TorrentList;
 import cloud.liso.liflix.repositories.TorrentListRepository;
+import cloud.liso.liflix.services.api.torrent.SortPolicy;
 import cloud.liso.liflix.services.api.torrent.TorrentService;
-import cloud.liso.liflix.services.api.torrent.TorrentSortCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -22,35 +22,36 @@ public class ZooqleTorrentService implements TorrentService {
 
     private TorrentListRepository torrentListRepository;
 
-    private TorrentComponentsRepositoryFacade torrentComponentsRepositoryFacade;
+    private TorrentAssociatedEntitiesRepositoryFacade associatedEntitiesServices;
 
     private ZooqleServiceFacade zooqleServiceFacade;
 
     @Autowired
     public ZooqleTorrentService(TorrentListRepository torrentListRepository,
-                                TorrentComponentsRepositoryFacade torrentComponentsRepositoryFacade,
+                                TorrentAssociatedEntitiesRepositoryFacade associatedEntitiesServices,
                                 ZooqleServiceFacade zooqleServiceFacade) {
 
         this.torrentListRepository = torrentListRepository;
-        this.torrentComponentsRepositoryFacade = torrentComponentsRepositoryFacade;
+        this.associatedEntitiesServices = associatedEntitiesServices;
         this.zooqleServiceFacade = zooqleServiceFacade;
     }
 
     @Override
     @Cacheable(value = "torrents")
-    public List<Torrent> getTorrents(Request request, TorrentSortCriteria searchCriteria) {
+    public List<Torrent> getTorrents(Request request, SortPolicy sortPolicy) {
         Optional<TorrentList> list = torrentListRepository.findByShowIdAndSeasonNumberAndEpisodeNumber(
                 request.getShowId(),
                 request.getSeasonNumber(),
                 request.getEpisodeNumber());
 
         if (list.isPresent() && lastUpdateTimeIsLessThanTTL(list.get())) {
-            return searchCriteria.sort(list.get().getTorrents());
+            return sortPolicy.sort(list.get().getTorrents());
         } else {
-            List<Torrent> torrents = zooqleServiceFacade.torrentsFrom(request);
-            List<Torrent> withSavedComponents = torrentComponentsRepositoryFacade.getOrSaveComponentsOfAll(torrents);
+            List<Torrent> fetchedTorrents = zooqleServiceFacade.torrentsFrom(request);
+            List<Torrent> withSavedComponents = associatedEntitiesServices
+                    .getOrPersistTorrentAssociatedEntitiesOfAll(fetchedTorrents);
             torrentListRepository.save(torrentListFrom(request, withSavedComponents));
-            return searchCriteria.sort(torrents);
+            return sortPolicy.sort(withSavedComponents);
         }
     }
 
@@ -60,22 +61,27 @@ public class ZooqleTorrentService implements TorrentService {
     }
 
     private TorrentList torrentListFrom(Request req, List<Torrent> torrents) {
+        TorrentList torrentList = createTorrentList(req, torrents);
+        linkTorrentsWithTorrentList(torrents, torrentList);
+        return torrentList;
+    }
 
-        TorrentList torrentList = TorrentList.builder()
+    private void linkTorrentsWithTorrentList(List<Torrent> torrents, TorrentList torrentList) {
+        torrents.forEach(t -> t.setTorrentList(torrentList));
+    }
+
+    private TorrentList createTorrentList(Request req, List<Torrent> torrents) {
+        return TorrentList.builder()
                 .showId(req.getShowId())
                 .seasonNumber(req.getSeasonNumber())
                 .episodeNumber(req.getEpisodeNumber())
                 .torrents(torrents)
                 .lastUpdate(LocalDateTime.now().withNano(0))
                 .build();
-
-        torrents.forEach(t -> t.setTorrentList(torrentList));
-
-        return torrentList;
     }
 
     @Override
-    public Torrent getTorrent(Request request, TorrentSortCriteria searchCriteria) {
+    public Torrent getTorrent(Request request, SortPolicy searchCriteria) {
         List<Torrent> torrents = getTorrents(request, searchCriteria);
         return torrents.isEmpty() ? Torrent.empty() : torrents.get(0);
     }

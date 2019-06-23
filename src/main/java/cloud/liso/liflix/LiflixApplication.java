@@ -23,4 +23,15 @@ public class LiflixApplication {
         return new ModelMapper();
     }
 
+//    @Bean
+//    @Qualifier("zooqleSelectors")
+//    public Selectors zooqleSelectors() {
+//        return new ZooqleSelectors();
+//    }
+
+//    @Bean
+//    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+//        // Do any additional configuration here
+//        return builder.build();
+//    }
 }

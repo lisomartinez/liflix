@@ -24,6 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -66,7 +67,7 @@ class ShowControllerTest {
     void getShow_ValidShowId_ShouldReturnShow() throws Exception {
 //        String token = getToken();
 
-        Show show = ShowFactory.getShowUptodateAiring();
+        Show show = ShowFactory.getShowComplete(LocalDateTime.now().withSecond(0).withNano(0));
         ShowDto showDto = modelMapper.map(show, ShowDto.class);
         when(showService.getShowById(anyInt())).thenReturn(show);
         MvcResult result = this.mockMvc.perform(get(ShowController.SHOWS + ShowController.SHOW_ID, show.getId()))
@@ -97,7 +98,7 @@ class ShowControllerTest {
 
     @Test
     void getShowPage_validPageNumberAndValidSize() throws Exception {
-        Show show = ShowFactory.getShowUptodateAiring();
+        Show show = ShowFactory.getShowComplete(LocalDateTime.now().withSecond(0).withNano(0));
         ShowDto expected = modelMapper.map(show, ShowDto.class);
         List<Show> shows = new ArrayList<>(Arrays.asList(show));
         final int p = 0;
