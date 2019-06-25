@@ -2,8 +2,8 @@ package cloud.liso.liflix.showservice.services.imdb;
 
 import cloud.liso.liflix.exceptions.ImdbShowNotFoundException;
 import cloud.liso.liflix.exceptions.ImdbWebClientErrorException;
-import cloud.liso.liflix.services.api.httpClient.WebPage;
-import cloud.liso.liflix.services.impl.imdb.ImdbWebClient;
+import cloud.liso.liflix.services.httpClient.WebPage;
+import cloud.liso.liflix.services.imdb.ImdbWebClient;
 import cloud.liso.liflix.showservice.utils.ShowFactory;
 import org.junit.jupiter.api.Test;
 

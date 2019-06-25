@@ -4,7 +4,7 @@ import cloud.liso.liflix.exceptions.TvMazeClientErrorException;
 import cloud.liso.liflix.exceptions.TvMazeResourceNotFoundException;
 import cloud.liso.liflix.exceptions.TvMazeServerErrorException;
 import cloud.liso.liflix.exceptions.TvMazeTooManyRequestsException;
-import cloud.liso.liflix.services.impl.tvMaze.TvMazeRestRespondeErrorHandler;
+import cloud.liso.liflix.services.tvMaze.TvMazeRestRespondeErrorHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

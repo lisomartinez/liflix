@@ -1,45 +1,47 @@
 package cloud.liso.liflix.torrentfinder.service.torrent.zooqle.parsers;
 
 import cloud.liso.liflix.model.torrent.Torrent;
-import cloud.liso.liflix.repositories.torrent.CodecRepository;
-import cloud.liso.liflix.repositories.torrent.ReleaseTypeRepository;
-import cloud.liso.liflix.repositories.torrent.ResolutionRepository;
-import cloud.liso.liflix.services.api.httpClient.DOMDocument;
-import cloud.liso.liflix.services.api.httpClient.WebPage;
-import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleDOMDocument;
-import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleEpisodeParser;
-import cloud.liso.liflix.services.impl.torrent.zooqle.selectors.ZooqleSelectors;
-import cloud.liso.liflix.services.impl.torrent.zooqle.selectors.element.ZooqleDocumentSelector;
+import cloud.liso.liflix.services.httpClient.DOMDocument;
+import cloud.liso.liflix.services.httpClient.WebPage;
+import cloud.liso.liflix.services.torrent.parsingUtils.ClassBasedElementsParser;
+import cloud.liso.liflix.services.torrent.parsingUtils.StringBasedElementsParser;
+import cloud.liso.liflix.services.torrent.parsingUtils.TorrentElementsFactory;
+import cloud.liso.liflix.services.torrent.zooqle.ZooqleTorrentElementsFactory;
+import cloud.liso.liflix.services.torrent.zooqle.client.ZooqleDOMDocument;
+import cloud.liso.liflix.services.torrent.zooqle.client.ZooqleEpisodeParser;
+import cloud.liso.liflix.services.torrent.zooqle.selectors.ZooqleSelectors;
+import cloud.liso.liflix.services.torrent.zooqle.selectors.element.ZooqleDocumentSelector;
 import cloud.liso.liflix.torrentfinder.utils.ZoogleUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = {ZooqleEpisodeParser.class, ZooqleDocumentSelector.class, ZooqleTorrentElementsFactory.class, ClassBasedElementsParser.class, StringBasedElementsParser.class, ZooqleSelectors.class})
+@ActiveProfiles("test")
 class ZooqleEpisodeParserTest {
 
     private ZooqleEpisodeParser episodeParser;
 
-    @Mock
-    private CodecRepository codecRepository;
+    @Autowired
+    private ZooqleDocumentSelector documentSelector;
 
-    @Mock
-    private ResolutionRepository resolutionRepository;
-
-    @Mock
-    private ReleaseTypeRepository releaseTypeRepository;
+    @Autowired
+    private TorrentElementsFactory torrentsElementsFactory;
 
     @BeforeEach
     void setUp() {
-        episodeParser = new ZooqleEpisodeParser(new ZooqleDocumentSelector(), new ZooqleSelectors());
+        episodeParser = new ZooqleEpisodeParser(documentSelector, torrentsElementsFactory);
     }
 
     @Test
@@ -47,10 +49,11 @@ class ZooqleEpisodeParserTest {
 //        WebPage webPage = webClient.fetchWebPage("https://zooqle.com/search?q=under+the+dome+s03e13");
         WebPage webPage = new WebPage(ZoogleUtils.getZooglePage());
         DOMDocument document = new ZooqleDOMDocument(webPage);
+
         List<Torrent> torrents = episodeParser.parseDOMDocument(document);
 
         Logger logger = LogManager.getLogger();
-        torrents.stream().forEach(logger::info);
+        torrents.forEach(logger::info);
         assertThat(torrents.size()).isEqualTo(6);
     }
 

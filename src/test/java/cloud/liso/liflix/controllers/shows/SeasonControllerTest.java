@@ -5,7 +5,7 @@ import cloud.liso.liflix.exceptions.SeasonNotFoundException;
 import cloud.liso.liflix.exceptions.ShowNotFoundException;
 import cloud.liso.liflix.model.show.Season;
 import cloud.liso.liflix.model.show.Show;
-import cloud.liso.liflix.services.api.show.SeasonService;
+import cloud.liso.liflix.services.show.SeasonService;
 import cloud.liso.liflix.showservice.utils.ShowFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

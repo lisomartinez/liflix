@@ -49,4 +49,8 @@ public class JsonTestFiles {
     public static File getSeason6233Episodes() {
         return path.resolve("Episodes_Season6233.json").toFile();
     }
+
+    public static File getUpdates() {
+        return path.resolve("updates.json").toFile();
+    }
 }

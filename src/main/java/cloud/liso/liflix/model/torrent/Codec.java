@@ -25,6 +25,10 @@ public class Codec {
         return new Codec(codec);
     }
 
+    public static Codec notFound() {
+        return new Codec("N/A");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

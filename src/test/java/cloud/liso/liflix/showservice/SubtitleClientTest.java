@@ -1,10 +1,6 @@
 package cloud.liso.liflix.showservice;
 
-import cloud.liso.liflix.services.api.subtitles.SubtitleClient;
-import cloud.liso.liflix.services.impl.openSubtitles.OpenSubsRestClient;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class SubtitleClientTest {
     @Test
@@ -14,7 +10,7 @@ public class SubtitleClientTest {
     @Test
     void getSubtitlesByIMDB() throws Exception {
         /*
-        episode (number)
+        parsingUtils (number)
         imdbid (always format it as sprintf("%07d", $imdb) - when using imdb you can add /tags-hdtv for example.
         moviebytesize (number)
         moviehash (should be always 16 character, must be together with moviebytesize)
@@ -28,16 +24,16 @@ public class SubtitleClientTest {
 //        String imdb = showImdb.substring(showImdb.lastIndexOf("t") + 1);
 
 //        assertThat(imdb).isEqualTo("1553656");
-        SubtitleClient client = new OpenSubsRestClient();
-        String url = client.byEpisode(20)
-                .byImdb("4145054")
-                .byMovieByteSize(750005572L)
-                .byMovieHash("319b23c54e9cf314")
-//                .byQuery("")
-                .bySeason(2)
-                .bySubLanguageId("eng")
-//                .byTag("")
-                .build();
-        assertThat(url).isEqualTo(expected);
+//        SubtitleClient client = new OpenSubsRestClient(fields);
+//        String url = client.byEpisode(20)
+//                .byImdb("4145054")
+//                .byMovieByteSize(750005572L)
+//                .byMovieHash("319b23c54e9cf314")
+////                .byQuery("")
+//                .bySeason(2)
+//                .bySubLanguageId("eng")
+////                .byTag("")
+//                .build();
+//        assertThat(url).isEqualTo(expected);
     }
 }

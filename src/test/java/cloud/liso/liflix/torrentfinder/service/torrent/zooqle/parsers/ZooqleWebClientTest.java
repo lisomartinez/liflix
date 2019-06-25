@@ -1,8 +1,8 @@
 package cloud.liso.liflix.torrentfinder.service.torrent.zooqle.parsers;
 
 import cloud.liso.liflix.exceptions.ZoogleWebClientErrorException;
-import cloud.liso.liflix.services.api.httpClient.WebPage;
-import cloud.liso.liflix.services.impl.torrent.zooqle.client.ZooqleWebClient;
+import cloud.liso.liflix.services.httpClient.WebPage;
+import cloud.liso.liflix.services.torrent.zooqle.client.ZooqleWebClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

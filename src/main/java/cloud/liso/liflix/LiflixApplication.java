@@ -1,6 +1,6 @@
 package cloud.liso.liflix;
 
-import cloud.liso.liflix.services.impl.searchEngine.SortCriteriaMap;
+import cloud.liso.liflix.services.torrent.searchEngine.SortCriteriaMap;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,7 +25,7 @@ public class LiflixApplication {
 
 //    @Bean
 //    @Qualifier("zooqleSelectors")
-//    public Selectors zooqleSelectors() {
+//    public StringSelectors zooqleSelectors() {
 //        return new ZooqleSelectors();
 //    }
 

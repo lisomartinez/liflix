@@ -4,7 +4,7 @@ import cloud.liso.liflix.dto.GenreDto;
 import cloud.liso.liflix.dto.ShowCardDto;
 import cloud.liso.liflix.dto.ShowDto;
 import cloud.liso.liflix.model.show.ShowCard;
-import cloud.liso.liflix.services.api.show.ShowService;
+import cloud.liso.liflix.services.show.ShowService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;

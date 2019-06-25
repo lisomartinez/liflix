@@ -5,7 +5,7 @@ import cloud.liso.liflix.dto.EpisodeDto;
 import cloud.liso.liflix.dto.MinSeasonDto;
 import cloud.liso.liflix.dto.SeasonDto;
 import cloud.liso.liflix.model.show.Season;
-import cloud.liso.liflix.services.api.show.SeasonService;
+import cloud.liso.liflix.services.show.SeasonService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -39,6 +39,7 @@ public class TvMazeEpisodeDto {
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @Builder.Default
     private LocalDate airdate = LocalDate.of(1900, 1, 1);
 
     @JsonSerialize(using = LocalTimeSerializer.class)

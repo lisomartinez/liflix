@@ -2,11 +2,11 @@ package cloud.liso.liflix.controllers.torrents;
 
 import cloud.liso.liflix.dto.TorrentDto;
 import cloud.liso.liflix.model.torrent.Request;
-import cloud.liso.liflix.services.api.torrent.SortPolicy;
-import cloud.liso.liflix.services.api.torrent.TorrentService;
-import cloud.liso.liflix.services.impl.searchEngine.SortCriteria;
-import cloud.liso.liflix.services.impl.searchEngine.SortCriteriaMap;
-import cloud.liso.liflix.services.impl.torrent.RequestParser;
+import cloud.liso.liflix.services.torrent.RequestParser;
+import cloud.liso.liflix.services.torrent.SortPolicy;
+import cloud.liso.liflix.services.torrent.TorrentService;
+import cloud.liso.liflix.services.torrent.searchEngine.SortCriteria;
+import cloud.liso.liflix.services.torrent.searchEngine.SortCriteriaMap;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

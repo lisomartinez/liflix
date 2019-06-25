@@ -26,6 +26,10 @@ public class ReleaseType {
         return new ReleaseType(relaseType);
     }
 
+    public static ReleaseType notFound() {
+        return new ReleaseType("N/A");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

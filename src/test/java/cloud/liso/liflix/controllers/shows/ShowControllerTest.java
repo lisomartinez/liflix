@@ -6,7 +6,7 @@ import cloud.liso.liflix.dto.ShowDto;
 import cloud.liso.liflix.exceptions.ShowNotFoundException;
 import cloud.liso.liflix.model.show.Show;
 import cloud.liso.liflix.model.show.ShowCard;
-import cloud.liso.liflix.services.api.show.ShowService;
+import cloud.liso.liflix.services.show.ShowService;
 import cloud.liso.liflix.showservice.utils.ShowFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

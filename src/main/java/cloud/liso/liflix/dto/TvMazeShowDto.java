@@ -114,7 +114,6 @@ public class TvMazeShowDto {
         }
     }
 
-
     @JsonProperty(value = "summary")
     private void setSummaryJson(String summaryJson) {
         if (summaryJson == null || summaryJson.isEmpty()) {

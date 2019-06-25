@@ -1,7 +1,8 @@
 package cloud.liso.liflix;
 
+import cloud.liso.liflix.dto.TvMazeScheduleDto;
+import cloud.liso.liflix.model.show.DayOfWeek;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.teletorflix.app.model.ScheduleDay;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import org.springframework.boot.test.json.ObjectContent;
 
 import java.io.IOException;
 import java.time.LocalTime;
-import java.util.Set;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,7 +38,7 @@ public class ScheduleJsonTest {
     }
 
     private TvMazeScheduleDto getScheduleWithOneDay() {
-        return TvMazeScheduleDto.of(Set.of(ScheduleDay.of("Thursday")), LocalTime.of(22, 0));
+        return TvMazeScheduleDto.of(Arrays.asList(DayOfWeek.of(DayOfWeek.THURSDAY)), LocalTime.of(22, 0));
     }
 
     private String getScheduleJsonWithOneDay() {
@@ -56,7 +57,7 @@ public class ScheduleJsonTest {
     }
 
     private TvMazeScheduleDto getScheduleWithTwoDays() {
-        return new TvMazeScheduleDto(Set.of(ScheduleDay.of("Monday"), ScheduleDay.of("Thursday")), LocalTime.of(22, 0));
+        return new TvMazeScheduleDto(Arrays.asList(DayOfWeek.of(DayOfWeek.MONDAY), DayOfWeek.of(DayOfWeek.MONDAY)), LocalTime.of(22, 0));
     }
 
     private String getScheduleJsonWithTwoDay() {

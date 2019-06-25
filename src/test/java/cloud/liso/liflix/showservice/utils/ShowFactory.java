@@ -1,7 +1,7 @@
 package cloud.liso.liflix.showservice.utils;
 
 import cloud.liso.liflix.model.show.*;
-import cloud.liso.liflix.services.impl.imdb.HttpImdbService;
+import cloud.liso.liflix.services.imdb.HttpImdbService;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.io.IOException;

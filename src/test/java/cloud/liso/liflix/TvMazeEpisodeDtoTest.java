@@ -1,5 +1,6 @@
 package cloud.liso.liflix;
 
+import cloud.liso.liflix.dto.TvMazeEpisodeDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;

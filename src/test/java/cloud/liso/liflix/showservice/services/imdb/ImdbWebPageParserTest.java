@@ -1,7 +1,7 @@
 package cloud.liso.liflix.showservice.services.imdb;
 
-import cloud.liso.liflix.services.api.httpClient.WebPage;
-import cloud.liso.liflix.services.impl.imdb.ImdbWebPageParser;
+import cloud.liso.liflix.services.httpClient.WebPage;
+import cloud.liso.liflix.services.imdb.ImdbWebPageParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

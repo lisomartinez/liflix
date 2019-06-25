@@ -1,6 +1,6 @@
 package cloud.liso.liflix.controllers.shows;
 
-import cloud.liso.liflix.services.api.imdb.ImdbService;
+import cloud.liso.liflix.services.imdb.ImdbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;

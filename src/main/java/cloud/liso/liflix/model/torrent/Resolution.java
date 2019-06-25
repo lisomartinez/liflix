@@ -28,6 +28,10 @@ public class Resolution implements Comparable<Resolution> {
         return new Resolution(resolution);
     }
 
+    public static Resolution notFound() {
+        return new Resolution("SD");
+    }
+
     @Override
     public int compareTo(Resolution other) {
         if (this.type.equalsIgnoreCase(other.type)) return 0;
