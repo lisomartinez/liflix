@@ -10,7 +10,7 @@ public class SubtitleClientTest {
     @Test
     void getSubtitlesByIMDB() throws Exception {
         /*
-        parsingUtils (number)
+        parsing (number)
         imdbid (always format it as sprintf("%07d", $imdb) - when using imdb you can add /tags-hdtv for example.
         moviebytesize (number)
         moviehash (should be always 16 character, must be together with moviebytesize)

@@ -1,8 +1,12 @@
 package cloud.liso.liflix.services.tvMaze;
 
 
-import cloud.liso.liflix.dto.ShowUpdateDto;
+import cloud.liso.liflix.model.show.Show;
+
+import java.util.List;
 
 public interface TvMazeService {
-    ShowUpdateDto updatedShows(int ttl);
+    List<Show> updatedShows();
+
+    void update();
 }

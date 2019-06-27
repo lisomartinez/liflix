@@ -16,7 +16,7 @@ public class OpenSubsFields {
     private static final int TAG_POSITION = 8;
 
     private static final String BASE_URL = "https://rest.opensubtitles.org/search";
-    private static final String EPISODE_PREFIX = "/parsingUtils-";
+    private static final String EPISODE_PREFIX = "/parsing-";
     private static final String IMDB_PREFIX = "/imdbid-";
     private static final String MOVIE_BYTE_SIZE_PREFIX = "/moviebytesize-";
     private static final String MOVIE_HASH_PREFIX = "/moviehash-";

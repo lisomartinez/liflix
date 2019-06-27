@@ -43,4 +43,5 @@ public class Codec {
     public int hashCode() {
         return type.hashCode();
     }
+
 }

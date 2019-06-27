@@ -8,7 +8,6 @@ import cloud.liso.liflix.services.httpClient.WebClient;
 import cloud.liso.liflix.services.httpClient.WebPage;
 import cloud.liso.liflix.services.httpClient.WebPageParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class HttpImdbService implements ImdbService {
     private ShowRepository showRepository;
 
     @Autowired
-    public HttpImdbService(@Qualifier("imdbWebClient") WebClient client, WebPageParser parse, ShowRepository showRepository) {
+    public HttpImdbService(WebClient client, WebPageParser parse, ShowRepository showRepository) {
         this.client = client;
         this.parse = parse;
         this.showRepository = showRepository;

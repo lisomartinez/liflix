@@ -2,7 +2,7 @@ package cloud.liso.liflix.showservice;
 
 import cloud.liso.liflix.dto.OpenSubtitlesSubtitleDto;
 import cloud.liso.liflix.exceptions.OpenSubsListingErrorException;
-import cloud.liso.liflix.services.show.RequestSubtitleDto;
+import cloud.liso.liflix.services.subtitles.RequestSubtitleDto;
 import cloud.liso.liflix.services.subtitles.SubtitleDownloader;
 import cloud.liso.liflix.services.subtitles.openSubtitles.OpenSubsDownloader;
 import cloud.liso.liflix.services.subtitles.openSubtitles.OpenSubsRestClient;

@@ -15,11 +15,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Table(name = "updates")
 public class ShowUpdate {
-    @Column(name = "last_update")
-    LocalDateTime lastUpdate;
     @Id
     @Column(name = "update_id")
     private int id;
+
+    @Column(name = "last_update")
+    LocalDateTime lastUpdate;
+
     @OneToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "show_id"))
     private Show show;

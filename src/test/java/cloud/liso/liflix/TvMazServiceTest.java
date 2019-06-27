@@ -70,10 +70,10 @@ public class TvMazServiceTest {
 //    void fetchSeason_ValidSeasonId_shouldReturnSeason() {
 //        final int showId = 1;
 //
-//        List<TvMazeSeason> seasons = Arrays.asList(new TvMazeSeason(), new TvMazeSeason(), new TvMazeSeason());
+//        List<TvMazeSeasonDto> seasons = Arrays.asList(new TvMazeSeasonDto(), new TvMazeSeasonDto(), new TvMazeSeasonDto());
 //
 //        when(tvMazeClient.getShowSeasons(showId)).thenReturn(seasons);
-//        when(modelMapper.map(any(TvMazeSeason.class), eq(Season.class))).thenReturn(new Season());
+//        when(modelMapper.map(any(TvMazeSeasonDto.class), eq(Season.class))).thenReturn(new Season());
 //
 //        List<Season> seasonList = tvMazeService.getSeasons(showId);
 //
@@ -85,10 +85,10 @@ public class TvMazServiceTest {
 //    void fetchSeason_ValidSeasonId_shouldCallTvMazeClient() {
 //        final int showId = 1;
 //
-//        List<TvMazeSeason> seasons = Arrays.asList(new TvMazeSeason(), new TvMazeSeason(), new TvMazeSeason());
+//        List<TvMazeSeasonDto> seasons = Arrays.asList(new TvMazeSeasonDto(), new TvMazeSeasonDto(), new TvMazeSeasonDto());
 //
 //        when(tvMazeClient.getShowSeasons(showId)).thenReturn(seasons);
-//        when(modelMapper.map(any(TvMazeSeason.class), eq(Season.class))).thenReturn(new Season());
+//        when(modelMapper.map(any(TvMazeSeasonDto.class), eq(Season.class))).thenReturn(new Season());
 //
 //        List<Season> seasonList = tvMazeService.getSeasons(showId);
 //
@@ -99,14 +99,14 @@ public class TvMazServiceTest {
 //    void fetchSeason_ValidSeasonId_shouldCallModelMapper() {
 //        final int showId = 1;
 //
-//        List<TvMazeSeason> seasons = Arrays.asList(new TvMazeSeason(), new TvMazeSeason(), new TvMazeSeason());
+//        List<TvMazeSeasonDto> seasons = Arrays.asList(new TvMazeSeasonDto(), new TvMazeSeasonDto(), new TvMazeSeasonDto());
 //
 //        when(tvMazeClient.getShowSeasons(showId)).thenReturn(seasons);
-//        when(modelMapper.map(any(TvMazeSeason.class), eq(Season.class))).thenReturn(new Season());
+//        when(modelMapper.map(any(TvMazeSeasonDto.class), eq(Season.class))).thenReturn(new Season());
 //
 //        List<Season> seasonList = tvMazeService.getSeasons(showId);
 //
-//        verify(modelMapper, times(3)).map(any(TvMazeSeason.class), eq(Season.class));
+//        verify(modelMapper, times(3)).map(any(TvMazeSeasonDto.class), eq(Season.class));
 //    }
 //
 //    @Test

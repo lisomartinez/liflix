@@ -3,7 +3,7 @@ package cloud.liso.liflix.services.subtitles.openSubtitles;
 import cloud.liso.liflix.dto.OpenSubtitlesSubtitleDto;
 import cloud.liso.liflix.dto.SubtitleDto;
 import cloud.liso.liflix.exceptions.OpenSubsListingErrorException;
-import cloud.liso.liflix.services.show.RequestSubtitleDto;
+import cloud.liso.liflix.services.subtitles.RequestSubtitleDto;
 import cloud.liso.liflix.services.subtitles.SubtitleClient;
 import cloud.liso.liflix.services.subtitles.SubtitleDownloader;
 import org.jetbrains.annotations.NotNull;

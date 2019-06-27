@@ -1,6 +1,6 @@
 package cloud.liso.liflix.services.subtitles.openSubtitles;
 
-import cloud.liso.liflix.services.show.RequestSubtitleDto;
+import cloud.liso.liflix.services.subtitles.RequestSubtitleDto;
 import cloud.liso.liflix.services.subtitles.SubtitleClient;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +67,7 @@ public class OpenSubsRestClient implements SubtitleClient {
         return this;
     }
 
-    private String getEncode(String query) {
+    private String getEncode(@NotNull String query) {
         try {
             return URLEncoder.encode(query, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -78,6 +78,7 @@ public class OpenSubsRestClient implements SubtitleClient {
 
     @Override
     public SubtitleClient bySeason(int season) {
+        if (season == 0) return this;
         url.add(fields.createSeason(season));
         return this;
     }

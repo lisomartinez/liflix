@@ -7,21 +7,23 @@ public class TvMazeRestURLConstructor implements TvMazeURLConstructor {
 
     private static final String BASE_URL = "http://api.tvmaze.com/";
     private static final String UPDATES = "http://api.tvmaze.com/updates/shows";
-    private static final String SHOWS = "shows/";
-    private static final String SHOWS_PAGE = "shows?page=";
-    private static final String SEARCH = "search/shows?q=";
-    private static final String SEASONS = "seasons";
-    private static final String EPISODES = "/episodes";
-
-    private StringBuilder sb;
-
-    public TvMazeRestURLConstructor() {
-        this.sb = new StringBuilder();
-    }
+    private static final String SHOW = "http://api.tvmaze.com/shows/";
+    private static final String SEASONS = "/seasons";
+    private static final String EPISODES = "/episodes?specials=1";
 
     @Override
     public String getUpdatesURL() {
         return UPDATES;
+    }
+
+    @Override
+    public String getShowSeasonsURL(int showId) {
+        return SHOW + showId + SEASONS;
+    }
+
+    @Override
+    public String getEpisodesURL(int showId) {
+        return SHOW + showId + EPISODES;
     }
 
 }

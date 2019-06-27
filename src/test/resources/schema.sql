@@ -196,5 +196,8 @@ create table torrent
         foreign key (torrent_list_id) references torrent_list (torrent_list_id)
 );
 
-
-
+create table UPDATES
+(
+    ID   INTEGER   not null primary key,
+    TIME TIMESTAMP not null
+);

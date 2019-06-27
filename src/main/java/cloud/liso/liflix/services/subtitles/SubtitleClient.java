@@ -1,7 +1,5 @@
 package cloud.liso.liflix.services.subtitles;
 
-import cloud.liso.liflix.services.show.RequestSubtitleDto;
-
 public interface SubtitleClient {
     SubtitleClient byImdb(String imdb);
 

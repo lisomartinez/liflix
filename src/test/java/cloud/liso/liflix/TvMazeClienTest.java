@@ -88,12 +88,12 @@ class TvMazeClienTest {
 //
 //    @Test
 //    void getShowSeasons_validShow_ShouldReturnListOfSeasons() throws IOException {
-//        File showSeasons = JsonTestFiles.getShowSeasons();
+//        File getShowSeasons = JsonTestFiles.getShowSeasons();
 //        final int showId = 1;
 //        setUpShowSeasons();
-//        List<TvMazeSeason> expected = objectMapper.readValue(showSeasons, new TypeReference<List<TvMazeSeason>>() {
+//        List<TvMazeSeasonDto> expected = objectMapper.readValue(getShowSeasons, new TypeReference<List<TvMazeSeasonDto>>() {
 //        });
-//        List<TvMazeSeason> response = tvMazeRestClient.getShowSeasons(showId);
+//        List<TvMazeSeasonDto> response = tvMazeRestClient.getShowSeasons(showId);
 //
 //        assertThat(response.size()).isEqualTo(expected.size());
 //    }

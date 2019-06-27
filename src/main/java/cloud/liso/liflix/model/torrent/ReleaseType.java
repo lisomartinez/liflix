@@ -44,4 +44,5 @@ public class ReleaseType {
     public int hashCode() {
         return type.hashCode();
     }
+
 }

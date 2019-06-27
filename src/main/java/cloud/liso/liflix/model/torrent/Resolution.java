@@ -80,4 +80,5 @@ public class Resolution implements Comparable<Resolution> {
     public int hashCode() {
         return type.hashCode();
     }
+
 }

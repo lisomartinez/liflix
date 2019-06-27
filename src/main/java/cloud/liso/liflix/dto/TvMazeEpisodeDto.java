@@ -50,6 +50,7 @@ public class TvMazeEpisodeDto {
     private String imageUrl;
     private String tvmazeUrl;
     private String summary;
+    private int season;
 
     @JsonProperty("url")
     private void setUrlOrDefault(String url) {

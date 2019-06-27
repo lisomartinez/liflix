@@ -74,4 +74,5 @@ public class Size implements Comparable<Size> {
         result = 31 * result + (unit != null ? unit.hashCode() : 0);
         return result;
     }
+
 }

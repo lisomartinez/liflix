@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,4 +22,7 @@ public interface ShowRepository extends JpaRepository<Show, Integer> {
 
     @Query("SELECT show.imdb FROM Show show WHERE show.id = ?1")
     Optional<String> getImdbURL(int showId);
+
+    @Query("Select s FROM Show s WHERE s.tvmazeId = :id")
+    Optional<Show> findByTvMazeId(@Param("id") int id);
 }
