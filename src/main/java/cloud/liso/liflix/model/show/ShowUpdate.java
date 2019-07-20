@@ -23,6 +23,6 @@ public class ShowUpdate {
     LocalDateTime lastUpdate;
 
     @OneToOne
-    @JoinColumn(foreignKey = @ForeignKey(name = "show_id"))
+    @JoinColumn(name = "show_id", foreignKey = @ForeignKey(name = "fk_updates_show"))
     private Show show;
 }

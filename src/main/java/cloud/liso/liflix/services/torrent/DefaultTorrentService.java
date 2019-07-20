@@ -4,7 +4,7 @@ import cloud.liso.liflix.model.torrent.Request;
 import cloud.liso.liflix.model.torrent.Torrent;
 import cloud.liso.liflix.model.torrent.TorrentList;
 import cloud.liso.liflix.repositories.TorrentListRepository;
-import cloud.liso.liflix.services.torrent.sortPolicies.SortPolicy;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

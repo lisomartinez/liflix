@@ -1,12 +1,13 @@
 package cloud.liso.liflix.controllers.torrents;
 
 import cloud.liso.liflix.dto.TorrentDto;
+import cloud.liso.liflix.exceptions.InvalidSortPolicyException;
 import cloud.liso.liflix.model.torrent.Request;
 import cloud.liso.liflix.services.torrent.TorrentService;
 import cloud.liso.liflix.services.torrent.parsing.RequestParser;
-import cloud.liso.liflix.services.torrent.sortPolicies.SortCriteria;
-import cloud.liso.liflix.services.torrent.sortPolicies.SortPolicies;
-import cloud.liso.liflix.services.torrent.sortPolicies.SortPolicy;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicies;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicy;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicyId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/torrents")
 public class TorrentsController {
+    public static final String TORRENTS = "/torrents";
     public static final String ALL_TORRENTS = "/all";
     public static final String BEST = "/best";
 
@@ -40,20 +42,29 @@ public class TorrentsController {
     @ResponseStatus(HttpStatus.OK)
     public List<TorrentDto> getTorrents(@RequestParam Map<String, String> params) {
         Request req = requestParser.from(params);
-        SortCriteria sortCriteria = SortCriteria.valueOfLabel(params.get("mode"));
-        SortPolicy criteria = sortPolicies.getOrDefault(sortCriteria);
-        return torrentService.getTorrents(req, criteria)
+        SortPolicyId sortPolicyId = getSortPolicyId(params.getOrDefault("mode", "default"));
+        SortPolicy policy = sortPolicies.getOrDefault(sortPolicyId);
+        return torrentService.getTorrents(req, policy)
                 .stream()
                 .map(t -> mapper.map(t, TorrentDto.class))
                 .collect(Collectors.toList());
+    }
+
+    private SortPolicyId getSortPolicyId(String policy) {
+        try {
+            return SortPolicyId.valueOfParam(policy);
+        } catch (Exception ex) {
+            throw new InvalidSortPolicyException(policy);
+        }
+
     }
 
     @GetMapping(BEST)
     @ResponseStatus(HttpStatus.OK)
     public TorrentDto getBest(@RequestParam Map<String, String> params) {
         Request request = requestParser.from(params);
-        SortCriteria sortCriteria = SortCriteria.valueOfLabel(params.get("mode"));
-        SortPolicy criteria = sortPolicies.getOrDefault(sortCriteria);
+        SortPolicyId sortPolicyId = getSortPolicyId(params.get("mode"));
+        SortPolicy criteria = sortPolicies.getOrDefault(sortPolicyId);
         return mapper.map(torrentService.getTorrent(request, criteria), TorrentDto.class);
     }
 }

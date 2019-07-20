@@ -1,9 +1,8 @@
 package cloud.liso.liflix.services.torrent.parsing;
 
 import cloud.liso.liflix.model.torrent.Torrent;
-import cloud.liso.liflix.services.httpClient.DOMElement;
+import cloud.liso.liflix.services.http_client.DOMElement;
 import org.springframework.stereotype.Component;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 @Component
 public class StringBasedElementsParser implements ElementsParser {
@@ -31,7 +30,7 @@ public class StringBasedElementsParser implements ElementsParser {
                 builder.seeders(parseInteger(parsedElement));
                 break;
             default:
-                throw new NotImplementedException();
+                throw new RuntimeException("Not yet implemented");
         }
     }
 

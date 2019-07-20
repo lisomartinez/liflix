@@ -67,9 +67,9 @@ logging:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/show-service-dev
-    username: showService
-    password: secretpassword
+    url: jdbc:mysql://localhost:3306/liflix-dev
+    username: liflix-dev
+    password: liflix-dev
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:

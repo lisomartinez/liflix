@@ -2,10 +2,10 @@ package cloud.liso.liflix.services.torrent.implementations.eztv;
 
 import cloud.liso.liflix.model.torrent.Request;
 import cloud.liso.liflix.model.torrent.Torrent;
-import cloud.liso.liflix.services.httpClient.JsoupDOMDocument;
-import cloud.liso.liflix.services.httpClient.TorrentURLConstructor;
-import cloud.liso.liflix.services.httpClient.WebClient;
-import cloud.liso.liflix.services.httpClient.WebPage;
+import cloud.liso.liflix.services.http_client.JsoupDOMDocument;
+import cloud.liso.liflix.services.http_client.TorrentURLConstructor;
+import cloud.liso.liflix.services.http_client.WebClient;
+import cloud.liso.liflix.services.http_client.WebPage;
 import cloud.liso.liflix.services.torrent.TorrentFetcher;
 import cloud.liso.liflix.services.torrent.parsing.EpisodeParser;
 import org.springframework.beans.factory.annotation.Autowired;

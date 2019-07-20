@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 @Builder
 public class TvMazeSeasonDto {
 
-    private final static Pattern pattern = Pattern.compile("(<.+?>)");
+    private static final Pattern pattern = Pattern.compile("(<.+?>)");
 
     private int id;
     private int number;

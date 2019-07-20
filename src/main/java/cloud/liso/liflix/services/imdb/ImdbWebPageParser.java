@@ -1,7 +1,7 @@
 package cloud.liso.liflix.services.imdb;
 
-import cloud.liso.liflix.services.httpClient.WebPage;
-import cloud.liso.liflix.services.httpClient.WebPageParser;
+import cloud.liso.liflix.services.http_client.WebPage;
+import cloud.liso.liflix.services.http_client.WebPageParser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;

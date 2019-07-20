@@ -6,7 +6,7 @@ import cloud.liso.liflix.exceptions.ShowNotFoundException;
 import cloud.liso.liflix.model.show.Season;
 import cloud.liso.liflix.model.show.Show;
 import cloud.liso.liflix.services.show.SeasonService;
-import cloud.liso.liflix.showservice.utils.ShowFactory;
+import cloud.liso.liflix.utils.ShowFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -65,7 +65,7 @@ class SeasonControllerTest {
         when(seasonService.getSeasonByNumber(showId, seasonNumber)).thenReturn(lastSeasonWithEpisodes);
 
         MvcResult result = this.mockMvc.perform(get(SeasonController.SHOWS + SeasonController.SHOW_ID
-                + SeasonController.SEASON + SeasonController.SEASON_NUMBER, showId, seasonNumber))
+                + SeasonController.SEASONS + SeasonController.SEASON_NUMBER, showId, seasonNumber))
 //                .header("Authorization", "Bearer " + token))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -86,7 +86,7 @@ class SeasonControllerTest {
         when(seasonService.getSeasonByNumber(showId, seasonNumber)).thenThrow(new ShowNotFoundException());
 
         this.mockMvc.perform(get(SeasonController.SHOWS + SeasonController.SHOW_ID
-                + SeasonController.SEASON + SeasonController.SEASON_NUMBER, showId, seasonNumber))
+                + SeasonController.SEASONS + SeasonController.SEASON_NUMBER, showId, seasonNumber))
 //                .header("Authorization", "Bearer " + token))
                 .andDo(print())
                 .andExpect(status().isNotFound());
@@ -102,7 +102,7 @@ class SeasonControllerTest {
         when(seasonService.getSeasonByNumber(showId, seasonNumber)).thenThrow(new SeasonNotFoundException());
 
         this.mockMvc.perform(get(SeasonController.SHOWS + SeasonController.SHOW_ID
-                + SeasonController.SEASON + SeasonController.SEASON_NUMBER, showId, seasonNumber))
+                + SeasonController.SEASONS + SeasonController.SEASON_NUMBER, showId, seasonNumber))
 //                .header("Authorization", "Bearer " + token))
                 .andDo(print())
                 .andExpect(status().isNotFound());

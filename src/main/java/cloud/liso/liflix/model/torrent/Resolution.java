@@ -13,7 +13,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "resolution")
 public class Resolution implements Comparable<Resolution> {
-    public static final Resolution RESOLUTION_720P = Resolution.of("720p");
+    public static final Resolution RESOLUTION_OF_720P = Resolution.of("720p");
+    public static final String RESOLUTION_720P = "720p";
+    public static final String RESOLUTION_SD = "SD";
+    public static final String RESOLUTION_480P = "480p";
+    public static final String RESOLUTION_1080P = "1080p";
 
     @Id
     @Column(name = "type")
@@ -29,36 +33,36 @@ public class Resolution implements Comparable<Resolution> {
     }
 
     public static Resolution notFound() {
-        return new Resolution("SD");
+        return new Resolution("RESOLUTION_SD");
     }
 
     @Override
     public int compareTo(Resolution other) {
         if (this.type.equalsIgnoreCase(other.type)) return 0;
 
-        if (this.type.equalsIgnoreCase("1080p") && (other.type.equalsIgnoreCase("SD"))) {
+        if (this.type.equalsIgnoreCase(RESOLUTION_1080P) && (other.type.equalsIgnoreCase(RESOLUTION_SD))) {
             return 2;
-        } else if (this.type.equalsIgnoreCase("1080p") && (other.type.equalsIgnoreCase("480p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_1080P) && (other.type.equalsIgnoreCase(RESOLUTION_480P))) {
             return 2;
-        } else if (this.type.equalsIgnoreCase("1080p") && (other.type.equalsIgnoreCase("720p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_1080P) && (other.type.equalsIgnoreCase(RESOLUTION_720P))) {
             return 1;
-        } else if (this.type.equalsIgnoreCase("720p") && (other.type.equalsIgnoreCase("SD"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_720P) && (other.type.equalsIgnoreCase(RESOLUTION_SD))) {
             return 1;
-        } else if (this.type.equalsIgnoreCase("720p") && (other.type.equalsIgnoreCase("480p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_720P) && (other.type.equalsIgnoreCase(RESOLUTION_480P))) {
             return 1;
-        } else if (this.type.equalsIgnoreCase("720p") && (other.type.equalsIgnoreCase("1080p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_720P) && (other.type.equalsIgnoreCase(RESOLUTION_1080P))) {
             return -1;
-        } else if (this.type.equalsIgnoreCase("SD") && (other.type.equalsIgnoreCase("1080p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_SD) && (other.type.equalsIgnoreCase(RESOLUTION_1080P))) {
             return -2;
-        } else if (this.type.equalsIgnoreCase("SD") && (other.type.equalsIgnoreCase("720p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_SD) && (other.type.equalsIgnoreCase(RESOLUTION_720P))) {
             return -1;
-        } else if (this.type.equalsIgnoreCase("SD") && (other.type.equalsIgnoreCase("480p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_SD) && (other.type.equalsIgnoreCase(RESOLUTION_480P))) {
             return 0;
-        } else if (this.type.equalsIgnoreCase("480p") && (other.type.equalsIgnoreCase("1080p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_480P) && (other.type.equalsIgnoreCase(RESOLUTION_1080P))) {
             return -2;
-        } else if (this.type.equalsIgnoreCase("480p") && (other.type.equalsIgnoreCase("720p"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_480P) && (other.type.equalsIgnoreCase(RESOLUTION_720P))) {
             return -1;
-        } else if (this.type.equalsIgnoreCase("480p") && (other.type.equalsIgnoreCase("SD"))) {
+        } else if (this.type.equalsIgnoreCase(RESOLUTION_480P) && (other.type.equalsIgnoreCase(RESOLUTION_SD))) {
             return 0;
         }
 

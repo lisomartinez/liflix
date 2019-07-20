@@ -1,6 +1,7 @@
 package cloud.liso.liflix.services.show;
 
 import cloud.liso.liflix.exceptions.SeasonNotFoundException;
+import cloud.liso.liflix.exceptions.ShowNotFoundException;
 import cloud.liso.liflix.model.show.Season;
 import cloud.liso.liflix.repositories.SeasonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,9 @@ public class DefaultSeasonService implements SeasonService {
 
     @Override
     public List<Season> getAllSeasons(int showId) {
-        return seasonRepository.findAllByShow(showId);
+        List<Season> seasons = seasonRepository.findAllByShow(showId);
+        if (seasons.isEmpty()) throw new ShowNotFoundException(String.valueOf(showId));
+        return seasons;
     }
 
     @Override

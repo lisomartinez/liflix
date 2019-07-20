@@ -82,6 +82,11 @@ public class Show {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "show")
     private List<Season> seasons;
 
+    public void addAllSeasons(List<Season> seasons) {
+        this.seasons.clear();
+        seasons.forEach(this::addSeason);
+    }
+
     public void addSeason(Season season) {
         seasons.add(season);
         season.setShow(this);

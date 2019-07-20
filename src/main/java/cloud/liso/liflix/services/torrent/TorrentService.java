@@ -2,7 +2,7 @@ package cloud.liso.liflix.services.torrent;
 
 import cloud.liso.liflix.model.torrent.Request;
 import cloud.liso.liflix.model.torrent.Torrent;
-import cloud.liso.liflix.services.torrent.sortPolicies.SortPolicy;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicy;
 
 import java.util.List;
 

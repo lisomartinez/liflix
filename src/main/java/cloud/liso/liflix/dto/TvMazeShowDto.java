@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 @Builder
 public class TvMazeShowDto {
 
-    private final static Pattern pattern = Pattern.compile("(<.+?>)");
+    private static final Pattern pattern = Pattern.compile("(<.+?>)");
 
     private static final String DEFAULT = "N/A";
 

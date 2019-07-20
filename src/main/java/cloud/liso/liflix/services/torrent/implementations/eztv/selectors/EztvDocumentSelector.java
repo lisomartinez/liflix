@@ -1,17 +1,15 @@
 package cloud.liso.liflix.services.torrent.implementations.eztv.selectors;
 
-import cloud.liso.liflix.services.httpClient.DOMDocument;
-import cloud.liso.liflix.services.httpClient.DOMElement;
-import cloud.liso.liflix.services.httpClient.DocumentSelector;
-import cloud.liso.liflix.services.httpClient.JsoupDOMElement;
+import cloud.liso.liflix.services.http_client.DOMDocument;
+import cloud.liso.liflix.services.http_client.DOMElement;
+import cloud.liso.liflix.services.http_client.DocumentSelector;
+import cloud.liso.liflix.services.http_client.JsoupDOMElement;
 import org.jsoup.nodes.Document;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class EztvDocumentSelector implements DocumentSelector {
-    private static final String CRITERIA = "table > tbody > tr";
-
     @Override
     public List<DOMElement> apply(DOMDocument document) {
         return ((Document) document.content()).getElementsByTag("table")

@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "days_of_week")
 @Data
 @NoArgsConstructor
+@Table(name = "days_of_week")
 public class DayOfWeek {
     public static final String MONDAY = "Monday";
     public static final String TUESDAY = "Tuesday";
@@ -42,3 +42,5 @@ public class DayOfWeek {
         return day;
     }
 }
+
+

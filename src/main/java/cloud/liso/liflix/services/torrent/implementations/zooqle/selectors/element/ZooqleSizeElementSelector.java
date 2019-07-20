@@ -1,7 +1,7 @@
 package cloud.liso.liflix.services.torrent.implementations.zooqle.selectors.element;
 
-import cloud.liso.liflix.services.httpClient.DOMElement;
-import cloud.liso.liflix.services.httpClient.ElementSelector;
+import cloud.liso.liflix.services.http_client.DOMElement;
+import cloud.liso.liflix.services.http_client.ElementSelector;
 import org.jsoup.nodes.Element;
 
 public class ZooqleSizeElementSelector implements ElementSelector {

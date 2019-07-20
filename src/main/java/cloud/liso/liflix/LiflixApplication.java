@@ -1,6 +1,6 @@
 package cloud.liso.liflix;
 
-import cloud.liso.liflix.services.torrent.sortPolicies.SortPolicies;
+import cloud.liso.liflix.services.torrent.sortpolicies.SortPolicies;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,15 +23,4 @@ public class LiflixApplication {
         return new ModelMapper();
     }
 
-//    @Bean
-//    @Qualifier("zooqleSelectors")
-//    public StringSelectors zooqleSelectors() {
-//        return new ZooqleSelectors();
-//    }
-
-//    @Bean
-//    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-//        // Do any additional configuration here
-//        return builder.build();
-//    }
 }

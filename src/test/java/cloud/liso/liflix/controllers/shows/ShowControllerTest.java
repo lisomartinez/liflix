@@ -7,7 +7,7 @@ import cloud.liso.liflix.exceptions.ShowNotFoundException;
 import cloud.liso.liflix.model.show.Show;
 import cloud.liso.liflix.model.show.ShowCard;
 import cloud.liso.liflix.services.show.ShowService;
-import cloud.liso.liflix.showservice.utils.ShowFactory;
+import cloud.liso.liflix.utils.ShowFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -233,7 +233,7 @@ class ShowControllerTest {
 //        when(showService.getSeasonById(showId, seasonNumber)).thenReturn(lastSeasonWithEpisodes);
 //
 //        MvcResult result = this.mockMvc.perform(get(ShowController.SHOWS + ShowController.SHOW_ID +
-//                ShowController.SEASON + ShowController.SEASON_NUMBER, showId, seasonNumber)
+//                ShowController.SEASONS + ShowController.SEASON_NUMBER, showId, seasonNumber)
 //                .header("Authorization", "Bearer " + token))
 //                .andDo(print())
 //                .andExpect(status().isOk())
@@ -254,7 +254,7 @@ class ShowControllerTest {
 //        when(showService.getSeasonById(showId, seasonNumber)).thenThrow(new ShowNotFoundException());
 //
 //        this.mockMvc.perform(get(ShowController.SHOWS + ShowController.SHOW_ID +
-//                ShowController.SEASON + ShowController.SEASON_NUMBER, showId, seasonNumber)
+//                ShowController.SEASONS + ShowController.SEASON_NUMBER, showId, seasonNumber)
 //                .header("Authorization", "Bearer " + token))
 //                .andDo(print())
 //                .andExpect(status().isNotFound());
@@ -270,7 +270,7 @@ class ShowControllerTest {
 //        when(showService.getSeasonById(showId, seasonNumber)).thenThrow(new SeasonNotFoundException());
 //
 //        this.mockMvc.perform(get(ShowController.SHOWS + ShowController.SHOW_ID +
-//                ShowController.SEASON + ShowController.SEASON_NUMBER, showId, seasonNumber)
+//                ShowController.SEASONS + ShowController.SEASON_NUMBER, showId, seasonNumber)
 //                .header("Authorization", "Bearer " + token))
 //                .andDo(print())
 //                .andExpect(status().isNotFound());

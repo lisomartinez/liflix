@@ -23,7 +23,7 @@ public class SeasonController {
 
     public static final String SHOWS = "/shows";
     public static final String SHOW_ID = "/{id}";
-    public static final String SEASON = "/seasons";
+    public static final String SEASONS = "/seasons";
     public static final String SEASON_NUMBER = "/{seasonNumber}";
 
     private SeasonService seasonService;
@@ -36,7 +36,7 @@ public class SeasonController {
         this.mm = mm;
     }
 
-    @GetMapping(SHOWS + SHOW_ID + SEASON)
+    @GetMapping(SHOWS + SHOW_ID + SEASONS)
     @ResponseStatus(OK)
     public List<MinSeasonDto> getAllSeasons(@PathVariable int id) {
         return seasonService.getAllSeasons(id).stream()
@@ -44,7 +44,7 @@ public class SeasonController {
                 .collect(toList());
     }
 
-    @GetMapping(SHOWS + SHOW_ID + SEASON + SEASON_NUMBER)
+    @GetMapping(SHOWS + SHOW_ID + SEASONS + SEASON_NUMBER)
     @ResponseStatus(OK)
     public SeasonDto getSeasonByShowIdAndSeasonNumber(@PathVariable int id, @PathVariable int seasonNumber) {
         return mapToDto(seasonService.getSeasonByNumber(id, seasonNumber));

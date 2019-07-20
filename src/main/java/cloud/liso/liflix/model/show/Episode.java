@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "parsing")
+@Table(name = "episode")
 public class Episode {
 
     @Id

@@ -1,7 +1,7 @@
 package cloud.liso.liflix.services.torrent.parsing;
 
 import cloud.liso.liflix.model.torrent.*;
-import cloud.liso.liflix.services.httpClient.DOMElement;
+import cloud.liso.liflix.services.http_client.DOMElement;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -60,7 +60,7 @@ public class ClassBasedElementsParser implements ElementsParser {
     }
 
     @Data
-    private class AdditionalInfo {
+    private static class AdditionalInfo {
         private String[] fields;
         private Resolution resolution;
         private Codec codec;
@@ -79,7 +79,7 @@ public class ClassBasedElementsParser implements ElementsParser {
                 if (RESOLUTION.matcher(field).matches()) {
                     resolution = Resolution.of(field);
                 } else if (CODEC.matcher(field).matches()) {
-                    codec = field.contains("-") ? Codec.of(field.substring(0, field.indexOf("-"))) : Codec.of(field);
+                    codec = field.contains("-") ? Codec.of(field.substring(0, field.indexOf('-'))) : Codec.of(field);
                 } else if (RELEASE_TYPE.matcher(field).matches()) {
                     releaseType = ReleaseType.of(field);
                 }

@@ -1,3 +1,23 @@
+DROP table if exists days_of_week;
+DROP table if exists genres;
+DROP table if exists schedule_days_of_week;
+DROP table if exists schedule;
+DROP table if exists episode;
+drop table if exists season;
+drop table if exists show_genre;
+drop table if exists shows;
+drop table if exists users;
+drop table if exists users_roles;
+drop table if exists roles;
+
+drop table if exists cards;
+drop table if exists codec;
+drop table if exists release_type;
+drop table if exists resolution;
+drop table if exists torrent_list;
+drop table if exists torrent;
+drop table if exists updates;
+
 create table days_of_week
 (
     day_of_week_id int auto_increment
@@ -147,7 +167,6 @@ create table cards
     seasons    bigint
 );
 
-
 create table codec
 (
     type VARCHAR(255) PRIMARY KEY
@@ -196,8 +215,10 @@ create table torrent
         foreign key (torrent_list_id) references torrent_list (torrent_list_id)
 );
 
-create table UPDATES
+create table updates
 (
-    ID   INTEGER   not null primary key,
-    TIME TIMESTAMP not null
+    update_id   INTEGER   not null primary key,
+    last_update TIMESTAMP not null,
+    show_id     INTEGER,
+    FOREIGN KEY (show_id) REFERENCES shows (show_id)
 );

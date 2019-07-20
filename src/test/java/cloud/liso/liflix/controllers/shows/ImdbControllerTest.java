@@ -33,6 +33,6 @@ class ImdbControllerTest {
         mvc.perform(get(ImdbController.IMDB + ImdbController.ID, 1))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", is("https://www.imdb.com/title/tt1553656/videoplayer/vi3897206297")));
+                .andExpect(jsonPath("$", is("https://www.imdb.com/videoembed/vi3897206297")));
     }
 }

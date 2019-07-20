@@ -45,10 +45,20 @@ public class Season {
     @Column(name = "summary", nullable = false, length = 5000)
     private String summary;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "season")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "season")
     private List<Episode> episodes;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "show_id", foreignKey = @ForeignKey(name = "fk_season_show"))
     private Show show;
+
+    public void addAllEpisodes(List<Episode> episodes) {
+        this.episodes.clear();
+        episodes.forEach(this::addEpisode);
+    }
+
+    private void addEpisode(Episode episode) {
+        episode.setSeason(this);
+        this.episodes.add(episode);
+    }
 }

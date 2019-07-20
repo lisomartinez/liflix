@@ -42,14 +42,14 @@ public class ShowController {
 
     @GetMapping(SHOWS + SHOW_ID)
     @ResponseStatus(OK)
-    @ApiOperation(value = "get a show by id")
+    @ApiOperation("get a show by id")
     public ShowDto getShow(@PathVariable int id) {
         return modelMapper.map(showService.getShowById(id), ShowDto.class);
     }
 
     @GetMapping(SHOWS)
     @ResponseStatus(OK)
-    @ApiOperation(value = "get show page")
+    @ApiOperation("get show page")
     public Page<ShowDto> getShowPage(@RequestParam(defaultValue = "0") int page,
                                      @RequestParam(defaultValue = "25") int size) {
         return showService.getShowPage(page, size).map(show -> modelMapper.map(show, ShowDto.class));
@@ -57,7 +57,7 @@ public class ShowController {
 
     @GetMapping(SHOWS + INDEX)
     @ResponseStatus(OK)
-    @ApiOperation(value = "get index page")
+    @ApiOperation("get index page")
     public Map<GenreDto, List<ShowCardDto>> getIndexPage() {
         return showService.getIndex().entrySet()
                 .stream()

@@ -1,6 +1,6 @@
 package cloud.liso.liflix.services.torrent.parsing;
 
-import cloud.liso.liflix.services.httpClient.ElementSelector;
+import cloud.liso.liflix.services.http_client.ElementSelector;
 
 import java.util.Map;
 

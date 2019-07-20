@@ -1,14 +1,13 @@
 package cloud.liso.liflix.model.torrent;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -55,4 +54,18 @@ public class Torrent {
         return new Torrent();
     }
 
+    @Override
+    public String toString() {
+        return "Torrent{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", magnetLink='" + magnetLink + '\'' +
+                ", resolution=" + resolution +
+                ", codec=" + codec +
+                ", releaseType=" + releaseType +
+                ", size=" + size +
+                ", seeders=" + seeders +
+                ", leechers=" + leechers +
+                '}';
+    }
 }

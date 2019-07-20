@@ -23,15 +23,15 @@ import java.util.regex.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ApiModel(value = "Show")
+@ApiModel("Show")
 public class ShowDto {
-    private final static Pattern pattern = Pattern.compile("(<.+?>)");
+    private static final Pattern pattern = Pattern.compile("(<.+?>)");
 
     private static final String DEFAULT = "N/A";
 
     private int id;
 
-    @ApiModelProperty(value = "Show's name")
+    @ApiModelProperty("Show's name")
     private String name;
     private String type;
     private String language;

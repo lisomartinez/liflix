@@ -1,7 +1,6 @@
 package cloud.liso.liflix.dto;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -23,7 +22,7 @@ public class ShowUpdateDeserializer extends StdDeserializer<ShowUpdateDto> {
     }
 
     @Override
-    public ShowUpdateDto deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public ShowUpdateDto deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         JsonNode node = p.getCodec().readTree(p);
         Map<Integer, LocalDateTime> map = new HashMap<>();
         node.fields().forEachRemaining(n -> map.put(Integer.parseInt(n.getKey()), LocalDateTime.ofEpochSecond(n.getValue().asLong(), 0, ZoneOffset.UTC)));

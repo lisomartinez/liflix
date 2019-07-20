@@ -22,7 +22,7 @@ public class ShowController_IT_ {
 //
 //    @BeforeEach
 //    void setUp() {
-//        baseUrl = "httpClient:/" + serverProperties.getAddress() + ":" + port;
+//        baseUrl = "http_client:/" + serverProperties.getAddress() + ":" + port;
 //    }
 //
 //    @Test
@@ -76,7 +76,7 @@ public class ShowController_IT_ {
 //    void getSeason_ValidShowIdAndValidSeasonId() throws IOException {
 //
 //        String url = baseUrl + ShowController.SHOWS + ShowController.SHOW_ID +
-//                ShowController.SEASON + ShowController.SEASON_NUMBER;
+//                ShowController.SEASONS + ShowController.SEASON_NUMBER;
 //
 //        HttpEntity entity = tokenFactory.entityWithAccessTokenHeader(baseUrl);
 //

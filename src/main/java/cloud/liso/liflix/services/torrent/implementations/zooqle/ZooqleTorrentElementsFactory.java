@@ -1,7 +1,7 @@
 package cloud.liso.liflix.services.torrent.implementations.zooqle;
 
 import cloud.liso.liflix.model.torrent.Torrent;
-import cloud.liso.liflix.services.httpClient.DOMElement;
+import cloud.liso.liflix.services.http_client.DOMElement;
 import cloud.liso.liflix.services.torrent.parsing.ElementsParser;
 import cloud.liso.liflix.services.torrent.parsing.Selectors;
 import cloud.liso.liflix.services.torrent.parsing.TorrentElementsFactory;
